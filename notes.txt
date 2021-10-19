@@ -1,0 +1,22 @@
+Users- what we started the project with
+
+Post- Class Library
+	a. int Id
+	b. string Title
+	c. string Text
+	d. List<comments> Comments
+	e. List<Likes> Likes
+	f. Guid AuthorId
+
+Comment- class Library
+	a. int Id
+	b. string Text
+	c. Guid AuthorId
+	d. List<Replies> Replies
+	e. int PostId [Foreign Key]
+
+Reply Class- class Library
+	a. int Id
+	b. int CommentId [Foreign Key]
+	c. string Text
+	d. Guid AuthorId
