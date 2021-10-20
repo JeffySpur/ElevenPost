@@ -11,6 +11,13 @@ namespace _24HourProjectPost.Services
 {
     public class ReplyService
     {
+        private readonly Guid _userId;
+
+        public ReplyService(Guid userId)
+        {
+            _userId = userId;
+        }
+
         public void CreateReply(ReplyCreate model)
         {
             var entity =
@@ -45,13 +52,6 @@ namespace _24HourProjectPost.Services
                         );
                 return entity.ToArray();
             }
-        }
-
-        private readonly Guid _userId;
-
-        public ReplyService(Guid userId)
-        {
-            _userId = userId;
         }
     }
 }
