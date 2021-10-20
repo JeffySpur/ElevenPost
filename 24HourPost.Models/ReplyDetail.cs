@@ -18,3 +18,4 @@ namespace _24HourPost.Models
         public virtual Comment Comment { get; set; }
     }
 }
+ 
