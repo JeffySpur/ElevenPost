@@ -53,5 +53,21 @@ namespace _24HourProjectPost.Services
                 return entity.ToArray();
             }
         }
+
+        public bool UpdateReply(ReplyEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Replys
+                        .Single(e => e.ReplyId == model.ReplyId && e.AuthorId == _userId);
+                entity.Text = model.Text;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+
     }
 }
