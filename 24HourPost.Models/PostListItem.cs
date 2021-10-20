@@ -5,21 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _24HourPost.Data
+namespace _24HourPost.Models
 {
-    public class Post
+    public class PostListItem
     {
-        [Key]
         public int Id { get; set; }
-        [Required]
-        public Guid AuthorId { get; set; }
-        [Required]
-        public string Title { get; set; }
-        [Required]
-        public string Text { get; set; }
-        public List<Post> Comments { get; set; }
-        public List<Post> Likes { get; set; }
 
+        public string Title { get; set; }
+
+        public string Text { get; set; }
+
+        /*public List<Post> Comments { get; set; }
+
+        public List<Post> Likes { get; set; }*/
     }
 }
-
