@@ -33,6 +33,13 @@ namespace _24HourProject.Controllers
             return Ok(posts);
         }
 
+        public IHttpActionResult GetPostById(int id)
+        {
+            var postService = CreatePostService();
+            var posts = postService.GetPostById(id);
+            return Ok(posts);
+        }
+
 
         private PostService CreatePostService()
         {

@@ -48,6 +48,26 @@ namespace _24HourProjectPost.Services
             }
         }
 
+        public PostDetail GetPostById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Posts
+                    .Single(e => e.Id == id && e.AuthorId == _userId);
+                return
+                    new PostDetail
+                    {
+                        Title = entity.Title,
+                        Text = entity.Text
+                    };
+            }
+        }
+                     
+                    
+
+
 
         private readonly Guid _userId;
 
