@@ -45,6 +45,35 @@ namespace _24HourProjectPost.Services
                         );
                 return entity.ToArray();
             }
+        }
+
+        public bool UpdateComment(CommentEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Comments
+                        .Single(e => e.CommentId == model.CommentId && e.AuthorId == _userId);
+                entity.Text = model.Text;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteComment(int commentId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Comments
+                        .Single(e => e.CommentId == commentId && e.AuthorId == _userId);
+
+                ctx.Comments.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
 
         }
 
