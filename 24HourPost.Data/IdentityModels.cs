@@ -38,8 +38,6 @@ namespace _24HourProject.Data
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Reply> Replys { get; set; }
 
-        
-
     }
 
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>

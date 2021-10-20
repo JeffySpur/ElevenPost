@@ -1,4 +1,4 @@
-﻿using _24HourPost.Data;
+using _24HourPost.Data;
 using _24HourPost.Models;
 using _24HourProject.Data;
 using System;
@@ -83,5 +83,8 @@ namespace _24HourProjectPost.Services
         {
             _userId = userId;
         }
+        private readonly Guid _userId;
+
+
     }
 }
