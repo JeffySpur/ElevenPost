@@ -9,48 +9,49 @@ using System.Threading.Tasks;
 
 namespace _24HourProjectPost.Services
 {
-    public class CommentService
+    public class PostService
     {
-        public void CreateComment(CommentCreate model)
+        public bool CreatePost(PostCreate model)
         {
             var entity =
-                new Comment()
+                new Post()
                 {
                     AuthorId = _userId,
                     Text = model.Text,
-                    PostId = model.PostId
+                    Title = model.Title
                 };
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Comments.Add(entity);
-                ctx.SaveChanges();
+                ctx.Posts.Add(entity);
+                return ctx.SaveChanges() == 1;
             }
         }
 
-        public IEnumerable<CommentListItem> GetCommentByPostId(int id)
+        public IEnumerable<PostListItem> GetPosts()
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
+                var query =
                     ctx
-                        .Comments
-                        .Where(e => e.PostId == id && e.AuthorId == _userId)
+                        .Posts
+                        .Where(e => e.AuthorId == _userId)
                         .Select(
                             e =>
-                            new CommentListItem
-                            {
-                                CommentId = e.CommentId,
-                                Text = e.Text
-                            }
+                                new PostListItem
+                                {
+                                    Id = e.Id,
+                                    Title = e.Title,
+                                    Text = e.Text
+                                }
                         );
-                return entity.ToArray();
+                return query.ToArray();
             }
-
         }
+
 
         private readonly Guid _userId;
 
-        public CommentService(Guid userId)
+        public PostService(Guid userId)
         {
             _userId = userId;
         }

@@ -13,7 +13,7 @@ namespace _24HourPost.Data
         [Key]
         public int Id { get; set; }
 
-        [ForeignKey(nameof(CommentId))]
+        [ForeignKey(nameof(Comment))]
         public int CommentId { get; set; }
         public virtual Comment Comment { get; set; }
         public string Text { get; set; }
